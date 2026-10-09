@@ -12,6 +12,7 @@ import { AboutPage } from './pages/AboutPage';
 import { BlogIndexPage } from './pages/BlogIndexPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { NextjsBlueprintModal } from './components/NextjsBlueprintModal';
+import { NativeAdBanner } from './components/NativeAdBanner';
 import { Container } from './components/Container';
 
 function parseLocation() {
@@ -113,6 +114,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-cream-50 text-brown-900">
       <Header currentPath={route.pathname} onNavigate={navigate} />
       <div className="flex-1">{renderPage()}</div>
+      <NativeAdBanner />
       <Footer
         onNavigate={navigate}
         onOpenNextjsBlueprint={() => setBlueprintOpen(true)}
