@@ -1,0 +1,6 @@
+{
+  "name": "Paw & Yarn — Crochet Dog Patterns",
+  "description": "Beginner-friendly, comfort-first crochet dog patterns, measuring guides, sweater sizing charts, and DIY dog costume tutorials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

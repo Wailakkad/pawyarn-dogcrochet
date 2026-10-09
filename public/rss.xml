@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paw &amp; Yarn — Crochet Dog Patterns</title>
+    <link>https://pawandyarn.com</link>
+    <description>Beginner-friendly, cute, practical dog crochet ideas, measuring guides, and cozy DIY patterns.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://pawandyarn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crochet Dog Halloween Costume Ideas (15 Easy DIY Looks)</title>
+      <link>https://pawandyarn.com/blog/crochet-dog-halloween-costume-ideas</link>
+      <guid isPermaLink="true">https://pawandyarn.com/blog/crochet-dog-halloween-costume-ideas</guid>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Browse 15 adorable, comfort-first crochet dog Halloween costume ideas you can make in an evening using scrap yarn—from pumpkin snoods and bat wings to candy corn collars.</description>
+      <category>Crochet Dog Halloween Costumes</category>
+    </item>
+    <item>
+      <title>Crochet Dog Sweater: How to Measure Your Dog (Neck, Chest, Back) + Size Chart</title>
+      <link>https://pawandyarn.com/blog/crochet-dog-sweater-measuring-guide</link>
+      <guid isPermaLink="true">https://pawandyarn.com/blog/crochet-dog-sweater-measuring-guide</guid>
+      <pubDate>Fri, 02 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Learn exactly how to measure your dog's neck, chest girth, and back length for a comfortable crochet dog sweater, complete with a printable size chart and breed fit adjustments.</description>
+      <category>Crochet Dog Sweaters</category>
+    </item>
+  </channel>
+</rss>
