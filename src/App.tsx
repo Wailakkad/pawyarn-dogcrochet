@@ -11,6 +11,7 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { BlogIndexPage } from './pages/BlogIndexPage';
 import { BlogPostPage } from './pages/BlogPostPage';
+import { FreeGuidePage } from './pages/FreeGuidePage';
 import { NextjsBlueprintModal } from './components/NextjsBlueprintModal';
 import { NativeAdBanner } from './components/NativeAdBanner';
 import { Container } from './components/Container';
@@ -109,6 +110,19 @@ export default function App() {
 
     return <HomePage posts={posts} onNavigate={navigate} />;
   };
+
+  const isFreeGuideRoute =
+    (route.pathname.replace(/\/+$/, '') || '/') === '/free-crochet-dog-sweater-pattern';
+
+  // The free-guide landing page renders alone (its own minimal header/footer)
+  // so global nav, ads, and footer links cannot distract from the email signup.
+  if (isFreeGuideRoute) {
+    return (
+      <div className="flex min-h-screen flex-col bg-cream-50 text-brown-900">
+        <FreeGuidePage onNavigate={navigate} />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-cream-50 text-brown-900">
