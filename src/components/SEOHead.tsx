@@ -8,6 +8,8 @@ interface SEOHeadProps {
   ogType?: 'website' | 'article';
   ogImage?: string;
   blogPost?: BlogPost;
+  /** Full JSON-LD object override (e.g. Product or CollectionPage schema). */
+  jsonLd?: Record<string, unknown>;
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
@@ -17,6 +19,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   ogType = 'website',
   ogImage = '/images/measuring-dog.jpg',
   blogPost,
+  jsonLd,
 }) => {
   const baseUrl =
     typeof window !== 'undefined' && window.location.origin
@@ -58,7 +61,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     canonicalEl.setAttribute('href', fullCanonicalUrl);
   }, [title, description, fullCanonicalUrl, ogType, fullImageUrl]);
 
-  const jsonLd = blogPost
+  const schema = jsonLd
+    ? jsonLd
+    : blogPost
     ? {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -103,7 +108,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );
 };

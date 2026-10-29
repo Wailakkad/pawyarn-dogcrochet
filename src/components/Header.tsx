@@ -14,6 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Blog', path: '/blog' },
+    { label: 'Shop', path: '/shop' },
   ];
 
   const isActive = (path: string) => {

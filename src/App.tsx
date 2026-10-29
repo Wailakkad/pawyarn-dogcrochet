@@ -12,6 +12,10 @@ import { AboutPage } from './pages/AboutPage';
 import { BlogIndexPage } from './pages/BlogIndexPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { FreeGuidePage } from './pages/FreeGuidePage';
+import { ShopPage } from './pages/ShopPage';
+import { ShopProductPage } from './pages/ShopProductPage';
+import { getProductBySlug } from './data/products';
+import { captureUtmParams } from './lib/utm';
 import { NextjsBlueprintModal } from './components/NextjsBlueprintModal';
 import { NativeAdBanner } from './components/NativeAdBanner';
 import { Container } from './components/Container';
@@ -34,6 +38,10 @@ export default function App() {
   const posts = useMemo(() => getAllPosts(), []);
 
   useEffect(() => {
+    // Persist UTM attribution from the landing URL so shop checkout redirects
+    // (Payhip) can forward it even after client-side navigation.
+    captureUtmParams();
+
     const handlePopState = () => {
       setRoute(parseLocation());
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -79,6 +87,36 @@ export default function App() {
           onSelectTag={handleSelectTag}
           onNavigate={navigate}
         />
+      );
+    }
+
+    if (cleanPath === '/shop') {
+      return <ShopPage onNavigate={navigate} />;
+    }
+
+    if (cleanPath.startsWith('/shop/')) {
+      const slug = cleanPath.replace('/shop/', '');
+      const product = getProductBySlug(slug);
+      if (product) {
+        return <ShopProductPage product={product} onNavigate={navigate} />;
+      }
+
+      return (
+        <Container as="main" className="py-20 text-center">
+          <h1 className="font-display text-3xl font-bold text-brown-900">
+            Pattern Not Found
+          </h1>
+          <p className="mt-3 text-sm text-brown-700">
+            We could not find a shop listing at <code className="font-mono">{cleanPath}</code>.
+          </p>
+          <button
+            type="button"
+            onClick={() => navigate('/shop')}
+            className="mt-6 inline-flex items-center rounded-xl bg-coral-500 px-5 py-2.5 text-xs font-semibold text-white hover:bg-coral-600"
+          >
+            Browse All Crochet Patterns
+          </button>
+        </Container>
       );
     }
 

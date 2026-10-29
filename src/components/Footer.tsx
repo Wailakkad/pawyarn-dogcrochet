@@ -70,6 +70,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenNextjsBlueprin
               </li>
               <li>
                 <a
+                  href="/shop"
+                  onClick={(e) => handleNav(e, '/shop')}
+                  className="transition-colors hover:text-coral-600"
+                >
+                  Shop Crochet Patterns
+                </a>
+              </li>
+              <li>
+                <a
                   href="/blog/crochet-dog-sweater-measuring-guide"
                   onClick={(e) => handleNav(e, '/blog/crochet-dog-sweater-measuring-guide')}
                   className="transition-colors hover:text-coral-600"

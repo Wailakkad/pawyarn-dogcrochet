@@ -56,3 +56,40 @@ export function captureUtmParams(): UtmParams {
 
   return { utmSource: '', utmCampaign: '', utmContent: '' };
 }
+
+/**
+ * Appends UTM attribution (from the current URL and/or the persisted session
+ * copy) onto an external checkout URL such as a Payhip product link, so
+ * Pinterest/traffic attribution survives the offsite redirect.
+ */
+export function appendUtmToUrl(targetUrl: string): string {
+  if (!targetUrl) return '';
+  if (!isBrowser()) return targetUrl;
+
+  try {
+    const url = new URL(targetUrl);
+    const utm = captureUtmParams();
+
+    const known: Array<[string, string]> = [
+      ['utm_source', utm.utmSource],
+      ['utm_campaign', utm.utmCampaign],
+      ['utm_content', utm.utmContent],
+    ];
+    for (const [key, value] of known) {
+      if (value && !url.searchParams.has(key)) {
+        url.searchParams.set(key, value);
+      }
+    }
+
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.forEach((value, key) => {
+      if (key.startsWith('utm_') && value && !url.searchParams.has(key)) {
+        url.searchParams.set(key, value);
+      }
+    });
+
+    return url.toString();
+  } catch {
+    return targetUrl;
+  }
+}
